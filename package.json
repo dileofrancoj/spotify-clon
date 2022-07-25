@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install",
+    "test": "npm run jest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
@@ -17,6 +19,7 @@
   },
   "devDependencies": {
     "eslint": "8.19.0",
-    "eslint-config-next": "12.2.0"
+    "eslint-config-next": "12.2.0",
+    "husky": "^8.0.1"
   }
 }
