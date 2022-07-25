@@ -1,14 +1,45 @@
+import * as React from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 
-export default function Login() {
-  var client_id = "f8af0a806a98469c96f63f9a9d7086dd";
-  var redirect_uri = "http://localhost:3000/callback";
+import { spotifyAuthCall } from "../helpers";
 
-  const spotifyUrl = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=code&redirect_uri=${redirect_uri}&scope=user-read-private`;
+export default function Login() {
+  const router = useRouter();
+
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [, setSpotifyTokenResponse] = React.useState(null);
+
+  const authenticateUser = React.useCallback(
+    async (code) => {
+      try {
+        const response = await spotifyAuthCall({
+          code,
+          grant_type: "authorization_code",
+        });
+        console.log("response", response);
+
+        if (response?.access_token) {
+          setSpotifyTokenResponse(response);
+          setIsAuthenticated(true);
+          // history.replace("/home");
+        }
+      } catch (error) {
+        setSpotifyTokenResponse(null);
+        setIsAuthenticated(false);
+      }
+    },
+    [setSpotifyTokenResponse, setIsAuthenticated]
+  );
+  React.useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const spotifyCode = urlParams.get("code");
+    if (spotifyCode || isAuthenticated) authenticateUser(spotifyCode);
+  }, [authenticateUser, isAuthenticated, router.pathname]);
 
   async function redirect() {
-    window.location.href = spotifyUrl;
+    window.location.replace(SPOTIFY_URL);
   }
   return (
     <div className={styles.container}>
