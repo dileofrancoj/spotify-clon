@@ -22,3 +22,8 @@ yarn dev
 - Commitlint + Husky
 
 ---
+
+### Pendientes
+1. Configuración de redux en next
+2. Creación de ruta home
+3. Autenticación por usuario
