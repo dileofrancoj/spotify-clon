@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "test": "npm run jest"
+    "test": "jest --coverage --bail"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.0",
-    "husky": "^8.0.1"
+    "husky": "^8.0.1",
+    "jest": "^28.1.3"
   }
 }
