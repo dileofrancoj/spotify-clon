@@ -3,7 +3,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 
-import { spotifyAuthCall } from "../helpers";
+import { spotifyAuth } from "./api/login";
+import { SPOTIFY_URL } from "../constants/credentials";
 
 export default function Login() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function Login() {
   const authenticateUser = React.useCallback(
     async (code) => {
       try {
-        const response = await spotifyAuthCall({
+        const response = await spotifyAuth({
           code,
           grant_type: "authorization_code",
         });
