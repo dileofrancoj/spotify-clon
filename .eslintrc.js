@@ -15,7 +15,10 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    'react/prop-types': 0,
-    'react/react-in-jsx-scope': 'off',
+    /* If want to activate this rules, you should disabled extends: ['plugin:@next/next/recommended'] (currently line 8) and enable 
+        extends: ['eslint:recommended', 'plugin:react/recommended'] (currently line 7)
+    */
+    //'react/prop-types': 0,
+    // 'react/react-in-jsx-scope': 'off',
   },
 };
