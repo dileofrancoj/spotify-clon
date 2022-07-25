@@ -19,5 +19,6 @@ yarn dev
 - React Query
 - Cypress
 - Sentry Logs
+- Commitlint + Husky
 
 ---
