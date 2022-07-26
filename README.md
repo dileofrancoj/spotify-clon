@@ -23,7 +23,7 @@ yarn dev
 
 ---
 
-Pendiente de confirmacion -> test commitlint hook
+Pendiente de confirmacion -> test commitlint hook PRUEBA 2
 
 ### Pendientes
 
